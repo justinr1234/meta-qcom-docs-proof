@@ -2,6 +2,10 @@
 # Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 #
 # SPDX-License-Identifier: BSD-3-Clause-Clear
+# check_persist_filesystem ensures the persist partition has a usable ext4
+# filesystem. It exits successfully when the device is absent, creates ext4
+# when no filesystem is detected, and recreates the filesystem after a failed
+# read-only e2fsck check.
 set -e
 
 DEV=/dev/disk/by-partlabel/persist
